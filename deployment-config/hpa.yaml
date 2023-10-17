@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-app
+spec:
+  # Specifies the target deployment for autoscaling
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app
+  # Minimum number of replicas to scale down to
+  minReplicas: 1
+  # Maximum number of replicas to scale up to
+  maxReplicas: 10
+  # The target CPU utilization percentage for autoscaling
+  # The HPA will aim to keep the average CPU utilization of pods at 70%
+  targetCPUUtilizationPercentage: 70
